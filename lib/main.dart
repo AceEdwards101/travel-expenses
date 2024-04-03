@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_expenses/widgets/expenses.dart';
+import 'package:travel_expenses/widgets/state.dart';
+
 
 var myLightColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 93, 89, 159),
@@ -12,7 +15,9 @@ var myDarkColorScheme = ColorScheme.fromSeed(
 
 void main() {
   runApp(
-    MaterialApp(
+    ChangeNotifierProvider(
+      create: (context) => ExpensesState(),
+      child: MaterialApp(
       darkTheme: ThemeData.dark().copyWith(
         colorScheme: myDarkColorScheme,
         cardTheme: const CardTheme().copyWith(
@@ -71,5 +76,5 @@ void main() {
       ),
       home: const Expenses(),
     ),
-  );
+  ));
 }
